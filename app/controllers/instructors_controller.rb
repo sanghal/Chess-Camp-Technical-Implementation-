@@ -8,8 +8,6 @@ class InstructorsController < ApplicationController
   end
 
   def show
-    @upcoming_camps = @instructor.camps.upcoming.chronological
-    @past_camps = @instructor.camps.past.chronological
   end
 
   def new

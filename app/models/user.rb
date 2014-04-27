@@ -16,9 +16,20 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, message: "does not match"
   validates_length_of :password, minimum: 4, message: "must be at least 4 characters long", allow_blank: true
 
+  ROLES = [['Administrator', :admin],['Instructor', :instructor]]
+
+  def role?(authorized_role)
+    return false if role.nil?
+    role.to_sym == authorized_role
+  end
+
 
   private
   def instructor_is_active_in_the_system
     is_active_in_system(:instructor)
+  end
+
+  def self.authenticate(username,password)
+    find_by_username(username).try(:authenticate, password)
   end
 end
