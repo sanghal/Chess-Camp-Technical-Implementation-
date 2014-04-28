@@ -19,7 +19,7 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
     if @location.save
-      redirect_to @location, notice: "#{@location.name} was added to the system."
+      redirect_to @location, notice: "#{@location.name} location was added to the system."
     else
       render action: 'new'
     end
@@ -28,7 +28,7 @@ class LocationsController < ApplicationController
   def update
  
     if @location.update(location_params)
-      redirect_to @location, notice: "#{@location.name} was revised in the system."
+      redirect_to @location, notice: "#{@location.name} location was revised in the system."
     else
       render action: 'edit'
     end
@@ -36,7 +36,7 @@ class LocationsController < ApplicationController
 
   def destroy
     @location.destroy
-    redirect_to locations_url, notice: "#{@location.name} was removed from the system."
+    redirect_to locations_url, notice: "#{@location.name} location was removed from the system."
   end
 
   private
@@ -44,8 +44,8 @@ class LocationsController < ApplicationController
       @location = Location.find(params[:id])
     end
 
-    def curriculum_params
-      params.require(:location).permit(:name, :street_!, :street_2, :city, :state, :zip, :max_capacity, :latitude, :longitude :active)
+    def location_params
+      params.require(:location).permit(:name, :street_1, :street_2, :city, :state, :zip, :max_capacity, :latitude, :longitude, :active)
     end
 
 

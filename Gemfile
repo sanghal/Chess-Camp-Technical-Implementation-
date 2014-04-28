@@ -21,6 +21,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+
 # Turbolinks isn't playing nicely with foundation so for now remove it from standard rails
 # gem 'turbolinks'
 
@@ -47,6 +48,7 @@ gem 'foundation-rails'
 # Use geocoder to get latitude and longitude data
 gem 'geocoder'
 
+gem 'chronic'
 # Use carrierwave to upload instructor photos
 gem 'carrierwave'
 

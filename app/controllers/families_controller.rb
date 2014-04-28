@@ -10,7 +10,7 @@ class FamiliesController < ApplicationController
   end
 
   def new
-    @family = ㄹFamily.new
+    @family = Family.new
   end
 
   def edit
@@ -19,7 +19,7 @@ class FamiliesController < ApplicationController
   def create
     @family = Family.new(family_params)
     if @family.save
-      redirect_to @family, notice: "#{@family.name} was added to the system."
+      redirect_to @family, notice: "#{@family.family_name} family was added to the system."
     else
       render action: 'new'
     end
@@ -27,7 +27,7 @@ class FamiliesController < ApplicationController
 
   def update
     if @family.update(family_params)
-      redirect_to @family, notice: "#{@family.name} was revised in the system."
+      redirect_to @family, notice: "#{@family.family_name} family was revised in the system."
     else
       render action: 'edit'
     end
@@ -35,7 +35,7 @@ class FamiliesController < ApplicationController
 
   def destroy
     @family.destroy
-    redirect_to families_url, notice: "#{@family.name} was removed from the system."
+    redirect_to families_url, notice: "#{@family_family.name} family was removed from the system."
   end
 
   private
@@ -43,7 +43,7 @@ class FamiliesController < ApplicationController
       @family = Family.find(params[:id])
     end
 
-    def curriculum_params
+    def family_params
       params.require(:family).permit(:family_name, :parent_first_name, :phone, :email, :active)
     end
 
