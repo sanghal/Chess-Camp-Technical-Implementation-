@@ -1,0 +1,19 @@
+<h3><%= "Registrations (#{@camp.registrations.count})"%></h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Rating</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @camp.students.each do |student| %>
+      <tr>
+        <td><%= link_to "#{student.last_name}, #{student.first_name}", student_path(student) %></td>
+        <td align="center"><%= student.rating.zero? ? "Unrated" : student.rating %></td>
+        <!-- see note in _task_details for comments on raw() -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>

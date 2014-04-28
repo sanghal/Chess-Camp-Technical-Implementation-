@@ -1,0 +1,19 @@
+<h3><%= "Registrations (#{@student.registrations.count})"%></h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @student.camps.each do |camp| %>
+      <tr>
+        <td><%= link_to camp.name, camp_path(camp) %></td>
+        <td><%= camp.start_date.strftime("%m/%d/%y") %></td>
+        <!-- see note in _task_details for comments on raw() -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
