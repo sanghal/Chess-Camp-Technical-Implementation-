@@ -2,8 +2,7 @@ class UsersController < ApplicationController
 before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @active_users = User.active.alphabetical.paginate(:page => params[:page]).per_page(10)
-    @inactive_users = User.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
+    
   end
 
   def show
@@ -20,23 +19,27 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: "#{@user.name} was added to the system."
+      session[:user_id] = @user.id
+      redirect_to home_path, notice: "Thank you for signing up!"
     else
-      render action: 'new'
+      flash[:error] = "This user could not be created."
+      render "new"
     end
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to @user, notice: "#{@user.name} was revised in the system."
+    if @user.update_attributes(user_params)
+      flash[:notice] = "#{@user.proper_name} is updated."
+      redirect_to @user
     else
-      render action: 'edit'
+      render :action => 'edit'
     end
   end
 
   def destroy
     @user.destroy
-    redirect_to users_url, notice: "#{@user.name} was removed from the system."
+    flash[:notice] = "Successfully removed #{@user.proper_name} from Arbeit."
+    redirect_to users_url
   end
 
   private
@@ -44,8 +47,8 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
       @user = User.find(params[:id])
     end
 
-    def curriculum_params
-      params.require(:user).permit(:name, :username,  :password_confirmation, :password, :instructor_id, :role, :active)
+    def user_params
+      params.require(:user).permit(:username, :password_confirmation, :password, :instructor_id, :role, :active)
     end
 
 

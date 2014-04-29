@@ -49,6 +49,8 @@ gem 'foundation-rails'
 gem 'geocoder'
 
 gem 'chronic'
+
+gem "nested_form"
 # Use carrierwave to upload instructor photos
 gem 'carrierwave'
 

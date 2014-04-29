@@ -34,6 +34,9 @@ class InstructorTest < ActiveSupport::TestCase
   should_not allow_value("412/268/3259").for(:phone)
   should_not allow_value("412-2683-259").for(:phone)
 
+
+  should accept_nested_attributes_for(:user)
+
   # set up context
   context "Within context" do
     setup do 

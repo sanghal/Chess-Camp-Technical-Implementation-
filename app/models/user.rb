@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
   # validations
   validates :username, presence: true, uniqueness: { case_sensitive: false}
   validates :role, inclusion: { in: %w[admin instructor], message: "is not a recognized role in system" }
-  validate :instructor_is_active_in_the_system, on: :create
   validates_presence_of :password, on: :create 
   validates_presence_of :password_confirmation, on: :create 
   validates_confirmation_of :password, message: "does not match"
@@ -20,13 +19,7 @@ class User < ActiveRecord::Base
 
   def role?(authorized_role)
     return false if role.nil?
-    role.to_sym == authorized_role
-  end
-
-
-  private
-  def instructor_is_active_in_the_system
-    is_active_in_system(:instructor)
+    role.downcase.to_sym == authorized_role
   end
 
   def self.authenticate(username,password)
