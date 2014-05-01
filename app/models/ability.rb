@@ -5,10 +5,34 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
        user ||= User.new # guest user (not logged in)
-       if user.admin?
+       if user.role? :admin
          can :manage, :all
-       else
-         can :read, :all
+       elsif user.role? :instructor
+           # they can update their own profile
+          can :update, Instructor do |u|  
+            u.user.id == user.id
+          end
+
+          can :update, User do |u|  
+            u.id == user.id
+          end
+
+          can :edit, Instructor do |u|  
+            u.user.id == user.id
+          end
+
+          can :read, Instructor do |u|  
+            u.user.id == user.id
+          end
+
+          can :read, Student do |s|  
+            my_students = user.instructor.camps.map { |camp| camp.students}.flatten
+            my_students.include? s
+
+          end
+
+
+         
        end
     #
     # The first argument to `can` is the action you are giving the user

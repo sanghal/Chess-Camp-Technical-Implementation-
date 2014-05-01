@@ -14,6 +14,10 @@
 <strong>Maximum Capacity:&nbsp;&nbsp;</strong> 
   <%= @location.max_capacity %><br /><br />
 
+<strong> Map&nbsp;&nbsp;</strong>
+	<%= image_tag @location.create_map_link %>
+
+
 
 
 <%= link_to "Edit this location", edit_location_path(@location), class: "button tiny radius" %>&nbsp;&nbsp;

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    
+
   end
 
   def show
@@ -29,7 +29,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def update
     if @user.update_attributes(user_params)
-      flash[:notice] = "#{@user.proper_name} is updated."
+      flash[:notice] = "#{@user} is updated."
       redirect_to @user
     else
       render :action => 'edit'
@@ -38,7 +38,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @user.destroy
-    flash[:notice] = "Successfully removed #{@user.proper_name} from Arbeit."
+    flash[:notice] = "Successfully removed #{@user} from Arbeit."
     redirect_to users_url
   end
 
@@ -48,8 +48,13 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     end
 
     def user_params
+    if current_user && current_user.role?(:admin)
       params.require(:user).permit(:username, :password_confirmation, :password, :instructor_id, :role, :active)
+    else
+       params.require(:user).permit(:username, :password_confirmation, :password, :instructor_id, :active)
+     end
     end
+
 
 
 

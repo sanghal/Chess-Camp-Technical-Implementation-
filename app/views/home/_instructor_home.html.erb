@@ -1,0 +1,48 @@
+<h2>Welcome Back user!</h2>
+<div class="row">
+
+	<div class="small-7 columns">
+
+<h3>Your information</h3><br />
+<strong>Name:&nbsp;&nbsp;</strong> 
+  <%= current_user.instructor.proper_name %><br /><br />
+
+<strong>Phone:&nbsp;&nbsp;</strong> 
+  <%= number_to_phone(current_user.instructor.phone) %><br /><br />
+
+<strong>Email:&nbsp;&nbsp;</strong> 
+  <%= mail_to current_user.instructor.email, current_user.instructor.email, encode: "javascript" %><br /><br />
+
+<strong>Active?&nbsp;&nbsp;</strong>
+  <%= current_user.instructor.active ? "Yes" : "No" %><br /><br />
+
+<strong>Biography</strong><br />
+  <%= current_user.instructor.bio.nil? ? "N/A" : current_user.instructor.bio %><br /><br />
+
+<% unless current_user.instructor.picture_url.nil? %>
+    <p><%= image_tag current_user.instructor.picture_url %></p>
+  <% end %>
+
+  <td><%= link_to 'Edit', edit_instructor_path(current_user.instructor), class: "button tiny radius" %></td>
+</div>
+  	<div class="small-1 columns">
+		&nbsp;
+	</div>
+
+	<div class="small-4 columns">
+		<div class="panel clearfix">
+			<%= link_to "List all Camps", camps_path %>
+		</div>
+	</div>
+
+  	<div class="small-1 columns">
+		&nbsp;
+	</div>
+
+      <div class="small-4 columns">
+      <%= render :partial => "instructor_camps" %>
+		</div>
+  
+
+
+</div>

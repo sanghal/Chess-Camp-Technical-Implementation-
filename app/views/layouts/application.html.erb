@@ -12,14 +12,12 @@
   </head>
 
   <body>
+    <% if logged_in? && current_user.role == 'admin' %>
     <%= render :partial => "partials/nav" %>
-    <div id = "login">
-      <% if logged_in? %>
-    <%= link_to 'Logout', logout_path %>
-    <br>[<%= current_user.username %>:<%= current_user.role %>]
-  <% else %>
-    <%= link_to 'Login', login_path %>
-  <% end %>
+    <%else %>
+    <%= render :partial => "partials/nav_guest" %>
+    <%end%>
+
 </div>
     
     <div class="row">

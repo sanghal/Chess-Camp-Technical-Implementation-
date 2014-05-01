@@ -1,24 +1,29 @@
 class StudentsController < ApplicationController
 	before_action :set_student, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   def index
+
     @active_students = Student.active.alphabetical.paginate(:page => params[:page]).per_page(10)
     @inactive_students = Student.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
   end
 
   def show
+     
   
   end
 
   def new
+  
     @student = Student.new
   end
 
   def edit
+  
   end
 
   def create
-
+  
     @student = Student.new(student_params)
     if @student.save
       redirect_to @student, notice: "#{@student.first_name} #{@student.last_name}  was added to the system."
@@ -28,6 +33,7 @@ class StudentsController < ApplicationController
   end
 
   def update
+ 
     if @student.update(student_params)
       redirect_to @student, notice: "#{@student.first_name} #{@student.last_name} was revised in the system."
     else
@@ -36,6 +42,7 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+
     @student.destroy
     redirect_to students_url, notice: "#{@student.first_name} #{@student.last_name}  was removed from the system."
   end

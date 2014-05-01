@@ -2,22 +2,27 @@ class CurriculumsController < ApplicationController
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
 
   def index
+    authorize! :index, @curriculum
     @active_curriculums = Curriculum.active.alphabetical.paginate(:page => params[:page]).per_page(10)
     @inactive_curriculums = Curriculum.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
   end
 
   def show
+    authorize! :show, @curriculum
     @camps = @curriculum.camps.chronological.to_a
   end
 
   def new
+    authorize! :new, @curriculum
     @curriculum = Curriculum.new
   end
 
   def edit
+    authorize! :edit, @curriculum
   end
 
   def create
+    authorize! :create, @curriculum
     adjust_ratings
     @curriculum = Curriculum.new(curriculum_params)
     if @curriculum.save
@@ -28,6 +33,7 @@ class CurriculumsController < ApplicationController
   end
 
   def update
+    authorize! :update, @curriculum
     adjust_ratings
     if @curriculum.update(curriculum_params)
       redirect_to @curriculum, notice: "#{@curriculum.name} was revised in the system."
@@ -37,6 +43,7 @@ class CurriculumsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @curriculum
     @curriculum.destroy
     redirect_to curriculums_url, notice: "#{@curriculum.name} was removed from the system."
   end

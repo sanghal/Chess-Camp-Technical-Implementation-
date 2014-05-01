@@ -16,6 +16,7 @@
             </ul>
           </li>
 
+
           <!-- options for camps -->
           <li class="has-dropdown">
             <%= link_to "Camps", camps_path %>
@@ -34,6 +35,45 @@
               <li><%= link_to "Add an Instructor", new_instructor_path %></li>
             </ul>
           </li>
+
+          <li class="has-dropdown">
+            <%= link_to "Locations", locations_path %>
+            <ul class="dropdown">
+              <li><%= link_to "List Locations", locations_path %></li>
+              <li><%= link_to "Add a Location", new_location_path %></li>
+            </ul>
+          </li>
+
+          <li class="has-dropdown">
+            <%= link_to "Families", families_path %>
+            <ul class="dropdown">
+              <li><%= link_to "List Families", families_path %></li>
+              <li><%= link_to "Add a Family", new_family_path %></li>
+            </ul>
+          </li>
+
+          <li class="has-dropdown">
+            <%= link_to "Students", students_path %>
+            <ul class="dropdown">
+              <li><%= link_to "List Students", students_path %></li>
+              <li><%= link_to "Add a Student", new_student_path %></li>
+            </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <% if logged_in? %>
+          <%= link_to 'Logout', logout_path %>
+            <ul class="dropdown">
+              <li> <%= current_user.username %>:<%= current_user.role %></li>
+            </ul>
+   
+            <% else %>
+            <%= link_to 'Login', login_path %>
+            <% end %>
+          
+        </li>
+
+
         </ul>
       </section>
     </nav>

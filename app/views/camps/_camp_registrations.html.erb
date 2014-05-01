@@ -1,19 +1,11 @@
-<h3><%= "Registrations (#{@camp.registrations.count})"%></h3>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Rating</th>
-
-    </tr>
-  </thead>
-  <tbody>
+ <div class="panel clearfix">
+<h5><%= "Registrations (#{@camp.registrations.count})"%></h5>
+<h6>Student name and rating</h6>
+<ul class="side-nav">
     <% @camp.students.each do |student| %>
-      <tr>
-        <td><%= link_to "#{student.last_name}, #{student.first_name}", student_path(student) %></td>
-        <td align="center"><%= student.rating.zero? ? "Unrated" : student.rating %></td>
+          <%= link_to "#{student.last_name}, #{student.first_name}", student_path(student) %>
+        <li> Rating: <%= student.rating.zero? ? "Unrated" : student.rating %></li>
         <!-- see note in _task_details for comments on raw() -->
-      </tr>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+</div>
