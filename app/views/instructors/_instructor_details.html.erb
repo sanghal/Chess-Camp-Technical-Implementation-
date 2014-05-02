@@ -2,34 +2,15 @@
 <strong>Name:&nbsp;&nbsp;</strong> 
   <%= @instructor.proper_name %><br /><br />
 
-<strong>Phone:&nbsp;&nbsp;</strong> 
-  <%= number_to_phone(@instructor.phone) %><br /><br />
-
-<strong>Email:&nbsp;&nbsp;</strong> 
-  <%= mail_to @instructor.email, @instructor.email, encode: "javascript" %><br /><br />
-
-<strong>Active?&nbsp;&nbsp;</strong>
-  <%= @instructor.active ? "Yes" : "No" %><br /><br />
-
 <strong>Biography</strong><br />
   <%= @instructor.bio.nil? ? "N/A" : @instructor.bio %><br /><br />
 
 <% unless @instructor.picture_url.nil? %>
     <p><%= image_tag @instructor.picture_url %></p>
   <% end %>
+<% if logged_in? %>
+  <%= render :partial => "instructor_more_details" %>
 
- <% unless @user.nil? %>
-  <b>User Account Information:</b>
-    <ol>
-        <strong>Username:&nbsp;&nbsp;</strong> 
-  		<%= @user.username %><br /><br />
-
-		<strong>Role:&nbsp;&nbsp;</strong> 
-		  <%= @user.role %><br /><br />
-	</ol>
-<% end %>
-</p>
-
-
+<%end%>
 <%= link_to "Edit this instructor", edit_instructor_path(@instructor), class: "button tiny radius" %>&nbsp;&nbsp;
 <%= link_to 'Destroy instructor', instructor_path(@instructor), data: { confirm: 'Are you sure you want to permanently remove this instructor from the system?' }, method: :delete, class: "button tiny radius alert" %>

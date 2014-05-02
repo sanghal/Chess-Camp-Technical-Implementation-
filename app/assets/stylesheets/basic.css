@@ -19,7 +19,6 @@ body {
   font-size: 13px;
   height: auto;
   background-attachment:fixed;
-  text-align: center;
 }
 
 
@@ -33,7 +32,7 @@ border-collapse: collapse;
 } 
  
 th {
-  font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica,
+  font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica
   sans-serif;
   color: #6D929B;
   border-right: 1px solid #C1DAD7;

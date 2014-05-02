@@ -1,4 +1,11 @@
 class RegistrationsController < ApplicationController
+
+def index
+end
+
+def show
+  end
+
 def new
 
     @registration = Registration.new
@@ -12,11 +19,12 @@ def new
   def create
     @registration = Registration.new(registration_params)
     if @registration.save
-       if params[:from] == 'camp'
-        redirect_to camp_path(@registration.camp), notice: "registration was added to the system."
-      elsif params[:from] == 'student'
-        redirect_to student_path(@registration.student), notice: "registration was added to the system."
-      end  
+      #redirect_to (:back), notice: "registration was added to the system."
+       #if params[:from] == 'camp'
+       redirect_to camp_path(@registration.camp), notice: "registration was added to the system."
+      #elsif params[:from] == 'student'
+      #  redirect_to student_path(@registration.student), notice: "registration was added to the system."
+      #end  
     else
       render action: 'new'
     end
