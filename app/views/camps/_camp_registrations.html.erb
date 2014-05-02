@@ -7,5 +7,12 @@
         <li> Rating: <%= student.rating.zero? ? "Unrated" : student.rating %></li>
         <!-- see note in _task_details for comments on raw() -->
     <% end %>
-  </ul>
+  </ul> 
+  <%= link_to(new_registration_path(camp_id: @camp.id), class: 'button tiny radius') do %>
+  <i class="fa fa-clipboard"></i>
+  &nbsp;Register student to camp
+</br>
+<% end %>
+
+
 </div>

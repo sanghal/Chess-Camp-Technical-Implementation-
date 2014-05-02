@@ -17,3 +17,11 @@
     <% end %>
   </tbody>
 </table>
+
+<%= link_to(new_registration_path(student_id: @student.id), class: 'button tiny radius') do %>
+  <i class="fa fa-clipboard"></i>
+  &nbsp;Register student to camp
+</br>
+
+<%end%>
+
