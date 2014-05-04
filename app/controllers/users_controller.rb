@@ -38,7 +38,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @user.destroy
-    flash[:notice] = "Successfully removed #{@user} from Arbeit."
+    flash[:notice] = "Successfully removed #{@user}"
     redirect_to users_url
   end
 

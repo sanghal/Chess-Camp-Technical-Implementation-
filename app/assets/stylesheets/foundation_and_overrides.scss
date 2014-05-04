@@ -1258,3 +1258,10 @@ select.date { width: 95px; }
 #curriculum_description { height: 7rem; }
 
 @import 'foundation';
+
+#map img { 
+  max-width: none;
+}
+#map label { 
+  width: auto; display:inline; 
+} 

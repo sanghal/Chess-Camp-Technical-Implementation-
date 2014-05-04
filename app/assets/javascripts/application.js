@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require foundation
+//= require underscore
+//= require gmaps_googles
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
