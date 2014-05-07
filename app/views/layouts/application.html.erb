@@ -13,14 +13,17 @@
   </head>
 
   <body>
+    
     <% if logged_in? && current_user.role == 'admin' %>
     <%= render :partial => "partials/nav" %>
     <%else %>
     <%= render :partial => "partials/nav_guest" %>
     <%end%>
-
-</div>
-    
+    <div id = "blank">
+    </br>
+    </br>
+    </br>
+    </div>
     <div class="row">
       <div class="small-12 columns" id="main_content">
         <%= render :partial => "partials/flash" %>

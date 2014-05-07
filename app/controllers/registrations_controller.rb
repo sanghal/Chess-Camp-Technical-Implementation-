@@ -1,4 +1,5 @@
 class RegistrationsController < ApplicationController
+    before_action :set_registration, only: [:show, :edit, :update, :destroy]
 
 def index
 end
@@ -21,7 +22,7 @@ def new
     if @registration.save
       #redirect_to (:back), notice: "registration was added to the system."
        #if params[:from] == 'camp'
-       redirect_to camp_path(@registration.camp), notice: "registration was added to the system."
+       redirect_to @registration, notice: "registration was added to the system."
       #elsif params[:from] == 'student'
       #  redirect_to student_path(@registration.student), notice: "registration was added to the system."
       #end  

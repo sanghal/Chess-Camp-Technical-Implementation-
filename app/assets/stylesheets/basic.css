@@ -5,12 +5,13 @@ h1, h2 {
     text-align: center;
 }
 
-h3{
+h3, h6{
     font: "Trebuchet MS", Verdana, Arial, Helvetica;
     margin:auto;
     text-align: center;
 
 }
+
 
 
 body {
@@ -180,4 +181,9 @@ td {
 max-width: 80.5rem;
 margin: 0 auto;
 margin-bottom: 20px;
+}
+
+#blank{
+  background: url(chess2.jpg);
+
 }
