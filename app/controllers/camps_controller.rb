@@ -12,6 +12,7 @@ class CampsController < ApplicationController
 
   def show
     @instructors = @camp.instructors.alphabetical.to_a
+    @students = @camp.students.alphabetical.to_a
     @hash = Gmaps4rails.build_markers(@camp.location) do |location, marker|
     marker.lat location.latitude
     marker.lng location.longitude

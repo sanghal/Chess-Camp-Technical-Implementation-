@@ -1,0 +1,24 @@
+<h3>Past Camps Status Report</h3>
+
+<table class="table">
+  <tr>
+    <th width="260">Name</th>
+    <th width="120">Start Date</th>
+    <th width="120">Timeslot</th>
+    <th width="120">Paid</th>
+    <th width="120">Deposit only</th>
+    <th width="120">Payment recieved</th>
+  </tr>
+
+<% Camp.past.alphabetical.each do |camp| %>
+  <tr>
+    <td><%= link_to camp.name, camp_path(camp) %></td>
+    <td align="center"><%= camp.start_date.strftime('%m/%d/%y') %></td>
+    <td align="center"><%= camp.time_slot == "am" ? "Morning" : "Afternoon" %></td>
+    <td align="center"><%= camp.registrations.paid.to_a.size %></td>
+    <td align="center"><%= camp.registrations.deposit_only.to_a.size %></td>
+    <td align="center"><%= number_to_currency(camp.registrations.deposit_only.to_a.size * camp.cost) %></td>
+  </tr>
+<% end %>
+</table>
+<!-- Add the pagination using will_paginate gem -->

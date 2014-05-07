@@ -11,11 +11,21 @@
 
   <div class="small-4 columns">
     <!-- SIDEBAR CONTENT GOES HERE -->
+    <% unless @camp.camp_instructors.empty? %>
     <%= render partial: 'camp_instructors' %>
+    <% else %>
+    <p> No student registered </p>
+    <%end%>
   </div>
   <div class="small-4 columns">
+    
+      <% unless @camp.registrations.empty? %>
     <!-- SIDEBAR CONTENT GOES HERE -->
-    <%= render partial: 'camp_registrations' %>
+      <%= render partial: 'camp_registrations' %>
+      <% else %>
+        <p> No student registered </p>
+      <%end%>
+  
   </div>
 
 

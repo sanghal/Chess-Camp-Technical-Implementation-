@@ -2,8 +2,8 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Registration </legend>
 
-		<%= f.input :camp_id, collection: Camp.upcoming.active.alphabetical , input_html: {class: "avg"} %>		
-		<%= f.input :student_id, collection: Student.active.alphabetical, input_html: {class: "avg"} %>
+		<%= f.input :camp_id, collection: @set_camps , input_html: {class: "avg"} %>		
+		<%= f.input :student_id, collection: @set_students, input_html: {class: "avg"} %>
 		<%= f.input :payment_status, collection: %w[deposit full] %>
 		<%= f.input :points_earned %>
     <p>&nbsp;</p>

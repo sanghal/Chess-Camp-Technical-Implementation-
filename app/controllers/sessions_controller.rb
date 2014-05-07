@@ -2,6 +2,8 @@
     def new
     end
 
+    #loginging in systems
+
     def create
       user = User.find_by_username(params[:username])
       if user && User.authenticate(params[:username], params[:password])

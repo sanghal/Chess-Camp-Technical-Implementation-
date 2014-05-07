@@ -3,14 +3,19 @@
     <!-- MAIN CONTENT GOES HERE -->
     <%= render :partial => "camps", locals: { status: "Upcoming", camps: @upcoming_camps } %>
     <p>&nbsp;</p>
-    <% if logged_in? && current_user.role == 'admin' %>
-    <% unless @past_camps.empty? %>
-    <%= render :partial => "camps", locals: { status: "Past", camps: @past_camps } %>
-    <%end%>
     
+    <% if logged_in? && current_user.role == 'admin' %>
+      <% unless @past_camps.empty? %>
+        <%= render :partial => "camps", locals: { status: "Past", camps: @past_camps } %>
+        <%else%>
+        <p>There is no past camp<p>
+      <%end%>
     <%end%>
     <br />
+
+    <% if logged_in? && current_user.role == 'admin' %>
     <%= link_to "Add a new camp", new_camp_path, class: "button tiny radius" %>
+    <%end%>
   </div>
 
   <div class="small-1 columns">
@@ -18,7 +23,11 @@
   </div>
 
   <div class="small-4 columns">
+    <% unless @inactive_camps.empty? %>
     <!-- SIDEBAR CONTENT GOES HERE -->
     <%= render :partial => "inactive_camps" %>
+    <%else%>
+      <p>There is no past camp<p>
+    <%end%>
   </div>
 </div>

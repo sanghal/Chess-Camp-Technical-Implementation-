@@ -14,7 +14,9 @@
   </div>
 
     <div class="small-4 columns">
-      <%= render :partial => "instructor_camps" %>
+    <% if logged_in? && current_user.role == 'admin' %>
+        <%= render :partial => "instructor_camps" %>
+        <%end%>
 
 
   </div>

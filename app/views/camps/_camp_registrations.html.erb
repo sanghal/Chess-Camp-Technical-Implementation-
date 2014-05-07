@@ -1,18 +1,21 @@
 <div class="panel clearfix">
-<h5><%= "Registrations (#{@camp.registrations.count})"%></h5>
-<h6>Student name and rating</h6>
-<ul class="side-nav">
-    <% @camp.students.each do |student| %>
-          <%= link_to "#{student.last_name}, #{student.first_name}", student_path(student) %>
+	<h5><%= "Registrations (#{@camp.registrations.count})"%></h5>
+	<h6>Student name and rating</h6>
+	<ul class="side-nav">
+    <% @students.each do |student| %>
+         <%= link_to "#{student.last_name}, #{student.first_name}", student_path(student) %>
         <li> Rating: <%= student.rating.zero? ? "Unrated" : student.rating %></li>
         <!-- see note in _task_details for comments on raw() -->
     <% end %>
-  </ul> 
-  <%= link_to(new_registration_path(camp_id: @camp.id), class: 'button tiny radius') do %>
-  <i class="fa fa-clipboard"></i>
-  &nbsp;Register student to camp
-</br>
-<% end %>
+	</ul> 
+	  <% if logged_in? && current_user.role == 'admin' %>
+	   
+	 <%= link_to(new_registration_path(camp_id: @camp.id), class: 'button tiny radius') do %>
+	 	<i class="fa fa-clipboard"></i>
+	 	&nbsp;Register student to camp
+		</br>
+		<% end %>
+	<% end %>
 
 
 </div>

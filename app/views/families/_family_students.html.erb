@@ -1,19 +1,20 @@
-<h3>Students</h3>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Rating</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <% @family.students.each do |student| %>
+<% unless @students.empty? %>
+  <h3>Students</h3>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= link_to "#{student.first_name}", student_path(student) %></td>
-        <td align="center"><%= student.rating.zero? ? "Unrated" : student.rating %></td>
-        <!-- see note in _task_details for comments on raw() -->
+        <th>Name</th>
+        <th>Rating</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= link_to "#{student.last_name}, #{student.first_name}", student_path(student) %></td>
+          <td align="center"><%= student.rating.zero? ? "Unrated" : student.rating %></td>
+          <!-- see note in _task_details for comments on raw() -->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%end%>

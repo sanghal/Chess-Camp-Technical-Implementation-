@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
-before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-
   end
 
-  def show
-    
+  def show   
   end
 
   def new
@@ -48,14 +46,11 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     end
 
     def user_params
-    if current_user && current_user.role?(:admin)
-      params.require(:user).permit(:username, :password_confirmation, :password, :instructor_id, :role, :active)
-    else
-       params.require(:user).permit(:username, :password_confirmation, :password, :instructor_id, :active)
-     end
+      if current_user && current_user.role?(:admin)
+        params.require(:user).permit(:username, :password_confirmation, :password, :instructor_id, :role, :active)
+      else
+         params.require(:user).permit(:username, :password_confirmation, :password, :instructor_id, :active)
+      end
     end
-
-
-
 
 end
