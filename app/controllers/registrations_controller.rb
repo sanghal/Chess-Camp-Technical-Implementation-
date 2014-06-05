@@ -42,7 +42,7 @@ class RegistrationsController < ApplicationController
 
   def destroy
     @registration.destroy
-    redirect_to registrations_url, notice: "registration was removed from the system."
+    redirect_to home_path, notice: "registration was removed from the system."
   end
 
   private

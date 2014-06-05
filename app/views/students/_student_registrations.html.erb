@@ -1,27 +1,25 @@
-<h3><%= "Registrations (#{@student.registrations.count})"%></h3>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Date</th>
 
-    </tr>
-  </thead>
-  <tbody>
-    <% @student.camps.each do |camp| %>
-      <tr>
-        <td><%= link_to camp.name, camp_path(camp) %></td>
-        <td><%= camp.start_date.strftime("%m/%d/%y") %></td>
+<div class="panel clearfix">
+  <h5><%= "Registrations (#{@student.registrations.count})"%></h5>
+  <h6>Camp name and date</h6>
+  <ul class="side-nav">
+
+    <% @student.registrations.each do |registration| %>
+        <%= link_to registration.camp.name, camp_path(registration.camp) %>
+        <li><%= registration.camp.start_date.strftime("%m/%d/%y") %></li>
+        <%= link_to 'Edit', edit_registration_path(registration), class: "button tiny radius" %>
+        <%= link_to 'Destroy', registration_path(registration), data: { confirm: 'Are you sure you want to permanently remove this registration from the system?' }, method: :delete, class: "button tiny radius alert" %> 
+      </br>
         <!-- see note in _task_details for comments on raw() -->
-      </tr>
+    
     <% end %>
-  </tbody>
-</table>
+  </ul>
+
 
 <%= link_to(new_registration_path(student_id: @student.id), class: 'button tiny radius') do %>
   <i class="fa fa-clipboard"></i>
   &nbsp;Register student to camp
 </br>
+<% end %>
 
-<%end%>
-
+</div>

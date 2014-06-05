@@ -1,5 +1,6 @@
 ChessCamp::Application.routes.draw do
 
+  get "password_resets/new"
   # generated routes
   resources :curriculums
   resources :instructors
@@ -9,6 +10,7 @@ ChessCamp::Application.routes.draw do
   resources :registrations
   resources :students
   resources :users
+  resources :password_resets
 
   resources :sessions
   get 'user/edit' => 'users#edit', :as => :edit_current_user

@@ -39,12 +39,12 @@ class StudentsController < ApplicationController
     redirect_to students_url, notice: "#{@student.first_name} #{@student.last_name}  was removed from the system."
   end
 
+private
 
-  private
-#datepicker
   def convert_date_of_birth
     params[:student][:date_of_birth] = convert_to_date(params[:student][:date_of_birth]) unless params[:student][:date_of_birth].blank?
   end
+
   def set_student
     @student = Student.find(params[:id])
   end
@@ -53,7 +53,7 @@ class StudentsController < ApplicationController
     convert_date_of_birth
     params.require(:student).permit(:first_name, :last_name, :family_id, :date_of_birth, :rating, :active)
   end
-
-
-
 end
+
+
+

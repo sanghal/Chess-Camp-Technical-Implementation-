@@ -71,7 +71,7 @@ class LocationTest < ActiveSupport::TestCase
     end
 
     should "have a method to identify geocoordinates" do
-      assert_in_delta(40.4439459, @cmu.latitude, 0.001)
+      assert_in_delta(40.4445459, @cmu.latitude, 0.001)
       assert_in_delta(-79.9422046, @cmu.longitude, 0.001)
     end
 

@@ -14,7 +14,7 @@
     <% unless @camp.camp_instructors.empty? %>
     <%= render partial: 'camp_instructors' %>
     <% else %>
-    <p> No student registered </p>
+    <p> No instructor registered </p>
     <%end%>
   </div>
   <div class="small-4 columns">
@@ -24,6 +24,7 @@
       <%= render partial: 'camp_registrations' %>
       <% else %>
         <p> No student registered </p>
+           
       <%end%>
   
   </div>
