@@ -1,4 +1,6 @@
 Admin report page is generated only when there exists a past camp.
 
 Cucumber tests will fail because the today's date will be different depending on when they are tested
+
 (cucumber test context compares the given context dates with the today's dates)
+2
