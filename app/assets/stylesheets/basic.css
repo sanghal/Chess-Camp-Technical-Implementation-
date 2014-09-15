@@ -1,6 +1,6 @@
 h1, h2 {
     font-size: 25px;
-    font: "Trebuchet MS", Verdana, Arial, Helvetica;
+    color:#ffffff;
     margin:auto;
     text-align: center;
 }
@@ -8,22 +8,55 @@ h1, h2 {
 h3, h6{
     font: "Trebuchet MS", Verdana, Arial, Helvetica;
     margin:auto;
+    color:#ffffff;
     text-align: center;
 
+}
+
+#home{
+  padding:30px;
+  font-size: 100px;
+  color:#008cba;
+  font-family: 'Lobster', cursive;
+  text-shadow: 0px 0px 5px #fff;
+  opacity:1;
+}
+
+#homeside{
+  opacity: 1;
+font-size: 20px;
+color: #ffffff;
+font-weight: 400;
+text-align: center;
 }
 
 
 
 body {
+  font-family: 'Ubuntu', sans-serif;
 
   font-size: 13px;
+  color:#ffffff;
   height: auto;
-  background-attachment:fixed;
+  background-image: url('chessboard.jpg');
+
+-webkit-background-size: 100% auto;
+
+-moz-background-size: 100% auto;
+
+-ms-background-size: 100% auto;
+
+-o-background-size: 100% auto;
+
+background-size: 100% auto;
+
+  background-attachment: center fixed;
 }
 
 
 table {
   text-align: center;
+  color:#000000;
   width:100%; 
 line-height:21px; 
 border-top: 1px solid #cccccc; 

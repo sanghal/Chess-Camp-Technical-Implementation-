@@ -60,7 +60,7 @@ module Contexts
       @camp21.delete
       @camp22.delete
       @camp23.delete
-      @camp24.delete
+      @camp24.deleter
       @camp25.delete
       @camp26.delete
       @camp27.delete
